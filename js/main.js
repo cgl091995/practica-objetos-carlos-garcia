@@ -32,8 +32,8 @@ const objeto={
     precio: '5€',
     disponible: true
 }
-function imprimirSiTrue(){
-    if(disponible=true){
+function imprimirSiTrue(){                      //const imprimirSiTrue=()=>
+    if(objeto.disponible==true){
         console.log('el objeto esta disponible')}
         else{console.log('el bojeto no esta disponible')}
 }
@@ -95,23 +95,25 @@ inicio
 fin
 */
 
-obj1={
+
+const array2=[
+{
     nombre: 'carlos',
     precio: '0€',
     categoria: 'humano'
-}
-obj2={
+},
+{
     nombre:'arkan',
     precio:'2000€',
     categoria: 'perro'
-}
-obj3={
+},
+{
     nombre: 'lilo',
     precio:'1000€',
     categoria: 'perro'
 }
+]
 
-const array2=[obj1, obj2, obj3]
 
 function mismaCategoria(){
     array2.forEach((item)=>{if(item.categoria == 'perro')
@@ -145,22 +147,37 @@ fin
 */
 
 function ingresarNotasyMedia(){
-  let nota1=parseFloat (prompt('escriba su nota1'))  
-  let nota2=parseFloat (prompt('escriba su nota2'))
-  let nota3=parseFloat (prompt('escriba su nota3'))
+   const array=[]; 
+   const cuantasNotas=3;
+   let calificacion;
 
-    const resultado= (nota1 + nota2 + nota3) / 3
+    for(let i=0; i<cuantasNotas; i++){
+        let nota=parseFloat(prompt('escriba su nota'))
+        array.push(nota)
+    }  
+  
+
+    const resultado = array.reduce((acumulador, nota)=>acumulador + nota ,0) / 3
     console.log(resultado)
-    if(resultado < 5){
-        console.log('SUSPENSO')
+
+    if(nota >= 0 && nota <=10){
+
+        if(resultado < 5){
+            calificacion='SUSPENSO'
+        }
+        else if(resultado >= 5 && resultado < 7){
+            calificacion='APROBADO'
+        }
+        else{
+            calificacion='SOBRESALIENTE'
+        }
+    }else{
+            calificacion='nota no valida'
     }
-    else if(resultado <= 5 && resultado < 7){
-        console.log('APROBADO')
-    }
-    else{
-        console.log('SOBRESALIENTE')}
-    
+    console.log(calificacion)
+        
 }
+
 
 ingresarNotasyMedia()
 
